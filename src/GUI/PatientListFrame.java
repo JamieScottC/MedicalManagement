@@ -1,4 +1,5 @@
 package GUI;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -12,10 +13,25 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import Management.Patient;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class PatientListFrame extends JFrame {
 
 	private JPanel contentPane;
+	JLabel label = new JLabel("");
+
+	JLabel label_1 = new JLabel("");
+
+	JLabel label_2 = new JLabel("");
+
+	JLabel label_3 = new JLabel("");
+
+	JLabel label_4 = new JLabel("");
+
+	JLabel label_5 = new JLabel("");
+
+	JLabel label_6 = new JLabel("");
 
 	/**
 	 * Launch the application.
@@ -44,39 +60,112 @@ public class PatientListFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
+
 		String[] patientNames = createPatientNames(new String[Patient.patients.size()]);
-		
+
 		JList list = new JList(patientNames);
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBackground(Color.LIGHT_GRAY);
 		list.setForeground(Color.BLACK);
 		list.setBounds(10, 11, 145, 239);
 		list.setLayoutOrientation(JList.VERTICAL);
-	
 		JScrollPane scrollBar = new JScrollPane(list);
 		scrollBar.setForeground(Color.BLACK);
 		scrollBar.setBackground(Color.WHITE);
-		scrollBar.setBounds(10, 64, 209, 375);
+		scrollBar.setBounds(10, 45, 209, 423);
 		scrollBar.setViewportView(list);
 		contentPane.add(scrollBar);
+
+		JPanel patientPanel = new JPanel();
+		patientPanel.setVisible(false);
+		patientPanel.setLayout(null);
+		patientPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		patientPanel.setBounds(245, 0, 409, 521);
+		contentPane.add(patientPanel);
+		patientPanel.setVisible(false);
+		// Labels for patient panel
+
+		label.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		label.setBounds(10, 50, 267, 17);
+		patientPanel.add(label);
+
+	
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		label_1.setBounds(10, 90, 267, 21);
+		patientPanel.add(label_1);
+
+	
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		label_2.setBounds(10, 130, 267, 17);
+		patientPanel.add(label_2);
+
 		
+		label_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		label_3.setBounds(10, 170, 267, 17);
+		patientPanel.add(label_3);
+
+	
+		label_4.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		label_4.setBounds(10, 210, 235, 17);
+		patientPanel.add(label_4);
+
 		
-		  list.addListSelectionListener(new ListSelectionListener() {
-		      public void valueChanged(ListSelectionEvent le) {
-		        int i = list.getSelectedIndex();
-		        if (i != -1){
-		          
-		        }
-		      }
-		    });
+		label_5.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		label_5.setBounds(10, 250, 235, 17);
+		patientPanel.add(label_5);
+
+	
+		label_6.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		label_6.setBounds(10, 290, 267, 17);
+		patientPanel.add(label_6);
+
+		// When we select a patient
+		list.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent le) {
+				// Ignore firing off another event when you release the mouse
+				if (le.getValueIsAdjusting()) {
+					return;
+				}
+				int i = list.getSelectedIndex();
+				if (i != -1) {
+					// Selected a patient so display the panel
+					Patient patient = Patient.patients.get(i);
+					patientPanel.setVisible(true);
+					
+					updatePatientPanel(patient);
+				}
+			}
+		});
 	}
-	//Create array of Patient names and organize
+
+	// Create array of Patient names and organize
 	private String[] createPatientNames(String[] patientNames) {
-		for(int i = 0; i < Patient.patients.size(); i++){
+		for (int i = 0; i < Patient.patients.size(); i++) {
 			patientNames[i] = Patient.patients.get(i).getName();
 		}
 		return patientNames;
+	}
+
+	/*
+	 * private PatientAlert createAlert(int index){ //Pass this jframe through
+	 * as well so we can close it from the alert return new
+	 * PatientAlert(Patient.patients.get(index), this); }
+	 */
+	private void updatePatientPanel(Patient patient) {
+
+		 label.setText("Name:" + patient.getName());
+
+		 label_1.setText("Age: " + patient.getAge());
+
+		 label_2.setText("Address: " + patient.getAddress());
+
+		 label_3.setText("Phone Number: " + patient.getPhoneNumber());
+
+		 label_4.setText("Birthdate: " + patient.getBirthdate());
+
+		 label_5.setText("Employer: " + patient.getEmployer());
+
+		 label_6.setText("Insurance: " + patient.getInsurance());
+
 	}
 }

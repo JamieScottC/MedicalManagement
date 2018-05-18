@@ -1,10 +1,13 @@
 package Management;
+
 import java.awt.List;
 import java.util.ArrayList;
 
 public class Patient {
 	private String name, address, phoneNumber, birthdate, employer, insurance;
-	private int age, ssn, id;
+	private int age, id;
+	private String ssn;
+
 	public int getId() {
 		return id;
 	}
@@ -14,22 +17,23 @@ public class Patient {
 	}
 
 	public static ArrayList<Patient> patients = new ArrayList();
+
 	public Patient(String name, String address, String phoneNumber, String birthdate, String employer, String insurance,
-			int age, int ssn) {
+			String ssn) {
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.birthdate = birthdate;
 		this.employer = employer;
 		this.insurance = insurance;
-		this.age = age;
+		age = 2018 - Integer.parseInt(birthdate.substring(6));
 		this.ssn = ssn;
-		//Add this patient to our list of patients and assign id
+		// Add this patient to our list of patients and assign id
 		patients.add(this);
-		id = patients.size();
+		id = patients.size() - 1;
 	}
-	//Testing constructor
-	
+	// Testing constructor
+
 	public String getName() {
 		return name;
 	}
@@ -37,14 +41,17 @@ public class Patient {
 	public Patient() {
 		this.name = "J";
 		this.address = "J";
-		this.phoneNumber ="J";
+		this.phoneNumber = "J";
 		this.birthdate = "J";
 		this.employer = "J";
-		this.insurance ="J";
+		this.insurance = "J";
 		this.age = 5;
-		this.ssn = 10;
-		id = patients.size();
+		this.ssn = "12321321";
+		// Add this patient to our list of patients and assign id
+		patients.add(this);
+		id = patients.size() - 1;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -97,11 +104,11 @@ public class Patient {
 		this.age = age;
 	}
 
-	public int getSsn() {
+	public String getSsn() {
 		return ssn;
 	}
 
-	public void setSsn(int ssn) {
+	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
 }

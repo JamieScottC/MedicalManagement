@@ -53,6 +53,7 @@ public class HomeFrame {
 		Patient.patients.add(new Patient());
 		Patient.patients.add(new Patient());
 		Patient.patients.add(new Patient());
+		Patient joeyGarcia = new Patient("Joey Garcia","149 Achors road" ,"914-111-1111", "05/05/1990", "Fox Lane High School", "Blue Shield", "0910230123");
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 860, 550);
@@ -66,8 +67,8 @@ public class HomeFrame {
 				frame.setVisible(false);
 				frame.dispose();
 				//Make new patient frame object and set visable
-				PatientListFrame pframe = new PatientListFrame();
-				pframe.setVisible(true);
+				PatientListFrame plistframe = new PatientListFrame();
+				plistframe.setVisible(true);
 			}
 		});
 		btnPatients.setBounds(30, 60, 150, 31);
