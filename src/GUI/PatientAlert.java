@@ -23,58 +23,54 @@ public class PatientAlert extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public PatientAlert(Patient patient, final JFrame patientListFrame) {
+	public PatientAlert() {
+		setModal(true);
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setType(Type.POPUP);
-		setBounds(100, 100, 500, 145);
+		setBounds(100, 100, 500, 538);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		try {
-			setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			setVisible(true);
+			setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		contentPanel.setLayout(null);
 		{
-			JButton yesBtn = new JButton("Yes");
-			yesBtn.addActionListener(new ActionListener() {
+			JButton okBtn = new JButton("Ok");
+			okBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
 					dispose();
-					//Get rid of patient List Frame as well
-					patientListFrame.setVisible(false);
-					patientListFrame.dispose();
-					PatientFrame pFrame = new PatientFrame(patient);
-					pFrame.setVisible(true);
 				}
 			});
-			yesBtn.setBounds(171, 61, 65, 23);
-			contentPanel.add(yesBtn);
-			yesBtn.setActionCommand("OK");
-			getRootPane().setDefaultButton(yesBtn);
+			okBtn.setBounds(154, 475, 65, 23);
+			contentPanel.add(okBtn);
+			okBtn.setActionCommand("OK");
+			getRootPane().setDefaultButton(okBtn);
 		}
 		{
-			JButton noBtn = new JButton("No");
-			noBtn.addActionListener(new ActionListener() {
+			JButton cancelBtn = new JButton("Cancel");
+			cancelBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
 					dispose();
 				}
 			});
-			noBtn.setBounds(242, 61, 65, 23);
-			contentPanel.add(noBtn);
-			noBtn.setActionCommand("Cancel");
+			cancelBtn.setBounds(242, 475, 65, 23);
+			contentPanel.add(cancelBtn);
+			cancelBtn.setActionCommand("Cancel");
 		}
 
-		JLabel lblAreYourSure = new JLabel("Are your sure you would like to view Patient " + patient.getName());
+		JLabel lblAreYourSure = new JLabel("Please enter in all fields below");
 		lblAreYourSure.setVerticalAlignment(SwingConstants.TOP);
-		lblAreYourSure.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblAreYourSure.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblAreYourSure.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAreYourSure.setBounds(47, 11, 387, 34);
 		contentPanel.add(lblAreYourSure);
-
+		setVisible(true);
 	}
 }

@@ -15,6 +15,9 @@ import javax.swing.event.ListSelectionListener;
 import Management.Patient;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PatientListFrame extends JFrame {
 
@@ -32,6 +35,7 @@ public class PatientListFrame extends JFrame {
 	JLabel label_5 = new JLabel("");
 
 	JLabel label_6 = new JLabel("");
+	private final JButton btnAddNewPatient = new JButton("Add new Patient");
 
 	/**
 	 * Launch the application.
@@ -64,6 +68,7 @@ public class PatientListFrame extends JFrame {
 		String[] patientNames = createPatientNames(new String[Patient.patients.size()]);
 
 		JList list = new JList(patientNames);
+		list.setValueIsAdjusting(true);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBackground(Color.LIGHT_GRAY);
 		list.setForeground(Color.BLACK);
@@ -89,36 +94,40 @@ public class PatientListFrame extends JFrame {
 		label.setBounds(10, 50, 267, 17);
 		patientPanel.add(label);
 
-	
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		label_1.setBounds(10, 90, 267, 21);
 		patientPanel.add(label_1);
 
-	
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		label_2.setBounds(10, 130, 267, 17);
 		patientPanel.add(label_2);
 
-		
 		label_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		label_3.setBounds(10, 170, 267, 17);
 		patientPanel.add(label_3);
 
-	
 		label_4.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		label_4.setBounds(10, 210, 235, 17);
 		patientPanel.add(label_4);
 
-		
 		label_5.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		label_5.setBounds(10, 250, 235, 17);
 		patientPanel.add(label_5);
 
-	
 		label_6.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		label_6.setBounds(10, 290, 267, 17);
 		patientPanel.add(label_6);
 
+		btnAddNewPatient.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnAddNewPatient.setBounds(41, 11, 143, 23);
+
+		contentPane.add(btnAddNewPatient);
+		// Adding new patient...
+		btnAddNewPatient.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PatientAlert createNewPatient = new PatientAlert();
+			}
+		});
 		// When we select a patient
 		list.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent le) {
@@ -131,7 +140,7 @@ public class PatientListFrame extends JFrame {
 					// Selected a patient so display the panel
 					Patient patient = Patient.patients.get(i);
 					patientPanel.setVisible(true);
-					
+
 					updatePatientPanel(patient);
 				}
 			}
@@ -146,26 +155,23 @@ public class PatientListFrame extends JFrame {
 		return patientNames;
 	}
 
-	/*
-	 * private PatientAlert createAlert(int index){ //Pass this jframe through
-	 * as well so we can close it from the alert return new
-	 * PatientAlert(Patient.patients.get(index), this); }
-	 */
-	private void updatePatientPanel(Patient patient) {
+	
 
-		 label.setText("Name:" + patient.getName());
+	public void updatePatientPanel(Patient patient) {
 
-		 label_1.setText("Age: " + patient.getAge());
+		label.setText("Name:" + patient.getName());
 
-		 label_2.setText("Address: " + patient.getAddress());
+		label_1.setText("Age: " + patient.getAge());
 
-		 label_3.setText("Phone Number: " + patient.getPhoneNumber());
+		label_2.setText("Address: " + patient.getAddress());
 
-		 label_4.setText("Birthdate: " + patient.getBirthdate());
+		label_3.setText("Phone Number: " + patient.getPhoneNumber());
 
-		 label_5.setText("Employer: " + patient.getEmployer());
+		label_4.setText("Birthdate: " + patient.getBirthdate());
 
-		 label_6.setText("Insurance: " + patient.getInsurance());
+		label_5.setText("Employer: " + patient.getEmployer());
+
+		label_6.setText("Insurance: " + patient.getInsurance());
 
 	}
 }
