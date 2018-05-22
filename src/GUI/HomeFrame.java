@@ -53,7 +53,6 @@ public class HomeFrame {
 		Patient.patients.add(new Patient());
 		Patient.patients.add(new Patient());
 		Patient.patients.add(new Patient());
-		Patient joeyGarcia = new Patient("Joey Garcia","149 Achors road" ,"914-111-1111", "05/05/1990", "Fox Lane High School", "Blue Shield", "0910230123");
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 860, 550);

@@ -2,8 +2,14 @@ package GUI;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -13,15 +19,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import Management.Patient;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class PatientListFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JList<String> patientList;
 	JLabel label = new JLabel("");
 
 	JLabel label_1 = new JLabel("");
@@ -65,22 +67,22 @@ public class PatientListFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		String[] patientNames = createPatientNames(new String[Patient.patients.size()]);
-
-		JList list = new JList(patientNames);
-		list.setValueIsAdjusting(true);
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setBackground(Color.LIGHT_GRAY);
-		list.setForeground(Color.BLACK);
-		list.setBounds(10, 11, 145, 239);
-		list.setLayoutOrientation(JList.VERTICAL);
-		JScrollPane scrollBar = new JScrollPane(list);
+		// Create list of patients
+		patientList = new JList<String>(createPatientNames());
+		patientList.setValueIsAdjusting(true);
+		patientList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		patientList.setBackground(Color.LIGHT_GRAY);
+		patientList.setForeground(Color.BLACK);
+		patientList.setBounds(10, 11, 145, 239);
+		patientList.setLayoutOrientation(JList.VERTICAL);
+		// Make scrollbar for patients
+		JScrollPane scrollBar = new JScrollPane(patientList);
 		scrollBar.setForeground(Color.BLACK);
 		scrollBar.setBackground(Color.WHITE);
 		scrollBar.setBounds(10, 45, 209, 423);
-		scrollBar.setViewportView(list);
+		scrollBar.setViewportView(patientList);
 		contentPane.add(scrollBar);
-
+		// Patient panel to view patient info
 		JPanel patientPanel = new JPanel();
 		patientPanel.setVisible(false);
 		patientPanel.setLayout(null);
@@ -122,20 +124,21 @@ public class PatientListFrame extends JFrame {
 		btnAddNewPatient.setBounds(41, 11, 143, 23);
 
 		contentPane.add(btnAddNewPatient);
-		// Adding new patient...
+		// Creating new patient...
 		btnAddNewPatient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PatientAlert createNewPatient = new PatientAlert();
+				PatientAlert createNewPatient = new PatientAlert(getFrame());
+
 			}
 		});
 		// When we select a patient
-		list.addListSelectionListener(new ListSelectionListener() {
+		patientList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent le) {
 				// Ignore firing off another event when you release the mouse
 				if (le.getValueIsAdjusting()) {
 					return;
 				}
-				int i = list.getSelectedIndex();
+				int i = patientList.getSelectedIndex();
 				if (i != -1) {
 					// Selected a patient so display the panel
 					Patient patient = Patient.patients.get(i);
@@ -146,16 +149,16 @@ public class PatientListFrame extends JFrame {
 			}
 		});
 	}
+	// Helper Methods
 
 	// Create array of Patient names and organize
-	private String[] createPatientNames(String[] patientNames) {
+	public String[] createPatientNames() {
+		String[] patientNames = new String[Patient.patients.size()];
 		for (int i = 0; i < Patient.patients.size(); i++) {
 			patientNames[i] = Patient.patients.get(i).getName();
 		}
 		return patientNames;
 	}
-
-	
 
 	public void updatePatientPanel(Patient patient) {
 
@@ -174,4 +177,15 @@ public class PatientListFrame extends JFrame {
 		label_6.setText("Insurance: " + patient.getInsurance());
 
 	}
+
+	public void updatePatientList() {
+
+		patientList.setListData(createPatientNames());
+	}
+
+	// Getters and Setters
+	public PatientListFrame getFrame() {
+		return this;
+	}
+
 }
