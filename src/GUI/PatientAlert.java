@@ -53,6 +53,7 @@ public class PatientAlert extends JDialog {
 			e.printStackTrace();
 		}
 		{
+			//Ok button to add new patient, checks if birthdate is valid and updates PatientListFrame
 			JButton okBtn = new JButton("Ok");
 			okBtn.setBounds(165, 483, 80, 23);
 			okBtn.addActionListener(new ActionListener() {
@@ -79,6 +80,7 @@ public class PatientAlert extends JDialog {
 			getRootPane().setDefaultButton(okBtn);
 		}
 		{
+			//Cancels adding new patient
 			JButton cancelBtn = new JButton("Cancel");
 			cancelBtn.setBounds(247, 483, 80, 23);
 			cancelBtn.addActionListener(new ActionListener() {
@@ -159,7 +161,7 @@ public class PatientAlert extends JDialog {
 			setVisible(true);
 		}
 	}
-
+	//Check if <code>date</code> is valid
 	private boolean isValidDate(String date) {
 		if (date.charAt(2) != '/' || date.charAt(5) != '/' || !isNumber(date.substring(6))) {
 			return false;
@@ -167,7 +169,7 @@ public class PatientAlert extends JDialog {
 		
 		return true;
 	}
-
+	//Check if <code>str</code> is a number
 	private boolean isNumber(String str) {
 		try {
 			int date = Integer.parseInt(str);

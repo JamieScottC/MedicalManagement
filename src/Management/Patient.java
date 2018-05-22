@@ -1,6 +1,5 @@
 package Management;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 public class Patient {
@@ -8,16 +7,9 @@ public class Patient {
 	private int age, id;
 	private String ssn;
 
-	public int getId() {
-		return id;
-	}
+	public static ArrayList<Patient> patients = new ArrayList<Patient>();
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public static ArrayList<Patient> patients = new ArrayList();
-
+	// Construct needed requirements for a patient
 	public Patient(String name, String address, String phoneNumber, String birthdate, String employer, String insurance,
 			String ssn) {
 		this.name = name;
@@ -32,12 +24,8 @@ public class Patient {
 		patients.add(this);
 		id = patients.size() - 1;
 	}
-	// Testing constructor
 
-	public String getName() {
-		return name;
-	}
-
+	// Construct default patient
 	public Patient() {
 		this.name = "J";
 		this.address = "J";
@@ -50,6 +38,12 @@ public class Patient {
 		// Add this patient to our list of patients and assign id
 		patients.add(this);
 		id = patients.size() - 1;
+	}
+
+	// Getters and Setters
+
+	public String getName() {
+		return name;
 	}
 
 	public void setName(String name) {
@@ -110,5 +104,13 @@ public class Patient {
 
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -58,6 +57,8 @@ public class PatientListFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	//Need to suppress these warnings or designer will freak out?
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PatientListFrame() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -171,7 +172,7 @@ public class PatientListFrame extends JFrame {
 		}
 		return patientNames;
 	}
-
+	//Update the patient panel to currently selected patient
 	public void updatePatientPanel(Patient patient) {
 
 		label.setText("Name:" + patient.getName());

@@ -46,6 +46,7 @@ public class HomeFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		//Add test patients
 		Patient.patients.add(new Patient());
 		Patient.patients.add(new Patient());
 		Patient.patients.add(new Patient());
@@ -58,7 +59,7 @@ public class HomeFrame {
 		frame.setBounds(100, 100, 860, 550);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+		//Button to enter patient portal
 		JButton btnPatients = new JButton("Patients");
 		btnPatients.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
