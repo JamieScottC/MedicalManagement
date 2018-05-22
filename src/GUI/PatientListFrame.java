@@ -68,7 +68,7 @@ public class PatientListFrame extends JFrame {
 		contentPane.setLayout(null);
 
 		// Create list of patients
-		patientList = new JList<String>(createPatientNames());
+		patientList = new JList(createPatientNames());
 		patientList.setValueIsAdjusting(true);
 		patientList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		patientList.setBackground(Color.LIGHT_GRAY);
@@ -124,11 +124,23 @@ public class PatientListFrame extends JFrame {
 		btnAddNewPatient.setBounds(41, 11, 143, 23);
 
 		contentPane.add(btnAddNewPatient);
+
+		JButton btnDeletePatient = new JButton("Delete this Patient");
+		btnDeletePatient.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnDeletePatient.setBounds(41, 479, 143, 23);
+		contentPane.add(btnDeletePatient);
 		// Creating new patient...
 		btnAddNewPatient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PatientAlert createNewPatient = new PatientAlert(getFrame());
 
+			}
+		});
+		// Deleting currently selected patient
+		btnDeletePatient.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Patient.patients.remove(patientList.getSelectedIndex());
+				updatePatientList();
 			}
 		});
 		// When we select a patient
@@ -187,5 +199,4 @@ public class PatientListFrame extends JFrame {
 	public PatientListFrame getFrame() {
 		return this;
 	}
-
 }

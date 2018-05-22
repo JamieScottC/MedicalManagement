@@ -26,7 +26,6 @@ public class PatientAlert extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtName;
-	private JTextField txtAge;
 	private JTextField txtAddress;
 	private JTextField txtPhoneNumber;
 	private JTextField txtBirthdate;
@@ -55,7 +54,7 @@ public class PatientAlert extends JDialog {
 		}
 		{
 			JButton okBtn = new JButton("Ok");
-			okBtn.setBounds(179, 483, 65, 23);
+			okBtn.setBounds(165, 483, 80, 23);
 			okBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (isValidDate(txtBirthdate.getText())) {
@@ -81,7 +80,7 @@ public class PatientAlert extends JDialog {
 		}
 		{
 			JButton cancelBtn = new JButton("Cancel");
-			cancelBtn.setBounds(247, 483, 65, 23);
+			cancelBtn.setBounds(247, 483, 80, 23);
 			cancelBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 
@@ -107,51 +106,44 @@ public class PatientAlert extends JDialog {
 			txtName.setColumns(10);
 		}
 		{
-			txtAge = new JTextField();
-			txtAge.setText("Age");
-			txtAge.setBounds(15, 100, 86, 20);
-			contentPanel.add(txtAge);
-			txtAge.setColumns(10);
-		}
-		{
 			txtAddress = new JTextField();
 			txtAddress.setText("Address");
-			txtAddress.setBounds(15, 140, 86, 20);
+			txtAddress.setBounds(15, 100, 86, 20);
 			contentPanel.add(txtAddress);
 			txtAddress.setColumns(10);
 		}
 		{
 			txtPhoneNumber = new JTextField();
 			txtPhoneNumber.setText("Phone Number");
-			txtPhoneNumber.setBounds(15, 180, 86, 20);
+			txtPhoneNumber.setBounds(15, 140, 86, 20);
 			contentPanel.add(txtPhoneNumber);
 			txtPhoneNumber.setColumns(10);
 		}
 		{
 			txtBirthdate = new JTextField();
 			txtBirthdate.setText("Birthdate");
-			txtBirthdate.setBounds(15, 220, 86, 20);
+			txtBirthdate.setBounds(15, 180, 86, 20);
 			contentPanel.add(txtBirthdate);
 			txtBirthdate.setColumns(10);
 		}
 		{
 			txtEmployer = new JTextField();
 			txtEmployer.setText("Employer");
-			txtEmployer.setBounds(15, 260, 86, 20);
+			txtEmployer.setBounds(15, 220, 86, 20);
 			contentPanel.add(txtEmployer);
 			txtEmployer.setColumns(10);
 		}
 		{
 			txtInsurance = new JTextField();
 			txtInsurance.setText("Insurance");
-			txtInsurance.setBounds(15, 300, 86, 20);
+			txtInsurance.setBounds(15, 260, 86, 20);
 			contentPanel.add(txtInsurance);
 			txtInsurance.setColumns(10);
 		}
 		{
 			txtSsn = new JTextField();
 			txtSsn.setText("SSN");
-			txtSsn.setBounds(15, 340, 86, 20);
+			txtSsn.setBounds(15, 300, 86, 20);
 			contentPanel.add(txtSsn);
 			txtSsn.setColumns(10);
 
