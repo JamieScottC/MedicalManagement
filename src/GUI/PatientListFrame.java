@@ -132,12 +132,16 @@ public class PatientListFrame extends JFrame {
 		appointmentTable = new JTable();
 		appointmentTable.setFillsViewportHeight(true);
 		appointmentTable.setToolTipText("");
-		appointmentTable.setBorder(new LineBorder(new Color(0, 0, 0)));
 		appointmentTable.setBounds(88, 392, 300, 118);
 		patientPanel.add(appointmentTable);
 		JScrollPane scrollPane = new JScrollPane(appointmentTable);
 		scrollPane.setBounds(71, 431, 300, 80);
 		patientPanel.add(scrollPane);
+
+		JLabel lblAppointments = new JLabel("Appointments");
+		lblAppointments.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblAppointments.setBounds(182, 406, 102, 14);
+		patientPanel.add(lblAppointments);
 		// add patient button
 		btnAddNewPatient.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnAddNewPatient.setBounds(41, 11, 143, 23);
@@ -178,12 +182,18 @@ public class PatientListFrame extends JFrame {
 					updatePatientPanel(patient);
 
 					// Also update appointment table
+					AppointmentDataModel appointmentDataModel = new AppointmentDataModel(patient);
+
 					if (patient.getAppointments().size() != 0) {
-						AppointmentDataModel appointmentDataModel = new AppointmentDataModel(patient);
+
 						appointmentDataModel.setRowCount(patient.getAppointments().size());
 						appointmentTable.setModel(appointmentDataModel);
-						revalidate();
-						repaint();
+
+						// If we dont have any appointments lets clear the
+						// appointment table
+					} else {
+						appointmentDataModel.setRowCount(0);
+						appointmentTable.setModel(appointmentDataModel);
 
 					}
 				}

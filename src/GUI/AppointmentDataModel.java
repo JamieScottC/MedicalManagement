@@ -44,4 +44,8 @@ public class AppointmentDataModel extends DefaultTableModel {
 	public Object getValueAt(int row, int col) {
 		return data[row][col];
 	}
+	
+	public void setData(String[][] data){
+		this.data = data;
+	}
 }
