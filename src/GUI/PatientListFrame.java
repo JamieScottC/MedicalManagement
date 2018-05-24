@@ -16,12 +16,16 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableModel;
 
 import Management.Patient;
+import javax.swing.JTable;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.JScrollBar;
 
 public class PatientListFrame extends JFrame {
 
-	
 	private static final long serialVersionUID = 8356686953031687928L;
 	private JPanel contentPane;
 	private JList<String> patientList;
@@ -39,6 +43,7 @@ public class PatientListFrame extends JFrame {
 
 	JLabel label_6 = new JLabel("");
 	private final JButton btnAddNewPatient = new JButton("Add new Patient");
+	private JTable appointmentTable;
 
 	/**
 	 * Launch the application.
@@ -59,7 +64,7 @@ public class PatientListFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	//Need to suppress these warnings or designer will freak out?
+	// Need to suppress these warnings or designer will freak out?
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PatientListFrame() {
 		setResizable(false);
@@ -123,6 +128,17 @@ public class PatientListFrame extends JFrame {
 		label_6.setBounds(10, 290, 267, 17);
 		patientPanel.add(label_6);
 
+		// appointment table
+		appointmentTable = new JTable();
+		appointmentTable.setFillsViewportHeight(true);
+		appointmentTable.setToolTipText("");
+		appointmentTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		appointmentTable.setBounds(88, 392, 300, 118);
+		patientPanel.add(appointmentTable);
+		JScrollPane scrollPane = new JScrollPane(appointmentTable);
+		scrollPane.setBounds(71, 431, 300, 80);
+		patientPanel.add(scrollPane);
+		// add patient button
 		btnAddNewPatient.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnAddNewPatient.setBounds(41, 11, 143, 23);
 
@@ -160,6 +176,16 @@ public class PatientListFrame extends JFrame {
 					patientPanel.setVisible(true);
 
 					updatePatientPanel(patient);
+
+					// Also update appointment table
+					if (patient.getAppointments().size() != 0) {
+						AppointmentDataModel appointmentDataModel = new AppointmentDataModel(patient);
+						appointmentDataModel.setRowCount(patient.getAppointments().size());
+						appointmentTable.setModel(appointmentDataModel);
+						revalidate();
+						repaint();
+
+					}
 				}
 			}
 		});
@@ -174,7 +200,8 @@ public class PatientListFrame extends JFrame {
 		}
 		return patientNames;
 	}
-	//Update the patient panel to currently selected patient
+
+	// Update the patient panel to currently selected patient
 	public void updatePatientPanel(Patient patient) {
 
 		label.setText("Name:" + patient.getName());

@@ -1,17 +1,15 @@
 package GUI;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-
-import Management.Patient;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
-import java.awt.Font;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import Management.Appointment;
+import Management.Patient;
 
 public class HomeFrame {
 
@@ -52,6 +50,16 @@ public class HomeFrame {
 		Patient.patients.add(new Patient());
 		Patient.patients.add(new Patient());
 		Patient.patients.add(new Patient());
+		Patient test = new Patient("Joey Block", "test", "test", "05/05/2000", "test", "test", "test");
+		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
+		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
+		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
+		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
+		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
+		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
+		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
+		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
+		//Done testing
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 860, 550);
