@@ -16,13 +16,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableModel;
 
 import Management.Patient;
 import javax.swing.JTable;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.JScrollBar;
+
 
 public class PatientListFrame extends JFrame {
 

@@ -5,12 +5,14 @@ import javax.swing.table.DefaultTableModel;
 import Management.Patient;
 
 public class AppointmentDataModel extends DefaultTableModel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9005049384635839070L;
 	private String[] columnNames = {"Date", "Time", "Reason"};
 	private String[][] data;
-	private Patient patient;
 	private int rowCount = 3;
 	public AppointmentDataModel(Patient patient){
-			this.patient = patient;
 			data = new String[patient.getAppointments().size()][3];
 			for(int i = 0; i < patient.getAppointments().size(); i++){
 				data[i][0] = patient.getAppointments().get(i).getDate(); 
@@ -21,7 +23,6 @@ public class AppointmentDataModel extends DefaultTableModel {
 			for(int i = 0; i < patient.getAppointments().size(); i++){
 				data[i][2] = patient.getAppointments().get(i).getReason(); 
 			}
-			System.out.println(data.length);
 		}
 	
 	public int getColumnCount() {
