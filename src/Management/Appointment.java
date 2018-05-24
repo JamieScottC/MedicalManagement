@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 public class Appointment {
 	private String date, time;
-	private Patient patient;
 	public static ArrayList<Appointment>  appointments = new ArrayList<Appointment>();
-	public Appointment(String date, String time, Patient patient){
+	public Appointment(String date, String time){
 		this.date = date;
 		this.time = time;
-		this.patient = patient;
 	}
 
 	
@@ -31,11 +29,5 @@ public class Appointment {
 		this.time = time;
 	}
 
-	public Patient getPatient() {
-		return patient;
-	}
 
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
 }

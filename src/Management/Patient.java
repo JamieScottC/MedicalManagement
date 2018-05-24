@@ -6,6 +6,7 @@ public class Patient {
 	private String name, address, phoneNumber, birthdate, employer, insurance;
 	private int age, id;
 	private String ssn;
+	private ArrayList<Appointment> appointments = new ArrayList<Appointment>();
 
 	public static ArrayList<Patient> patients = new ArrayList<Patient>();
 
@@ -112,5 +113,13 @@ public class Patient {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public ArrayList<Appointment> getAppointments() {
+		return appointments;
+	}
+
+	public void setAppointments(ArrayList<Appointment> appointments) {
+		this.appointments = appointments;
 	}
 }

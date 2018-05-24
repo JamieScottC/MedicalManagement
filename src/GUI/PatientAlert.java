@@ -5,25 +5,19 @@ import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
 import Management.Patient;
-import java.awt.Window.Type;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import com.jgoodies.forms.layout.RowSpec;
 import javax.swing.JTextField;
 import java.awt.Color;
 
 public class PatientAlert extends JDialog {
 
+	private static final long serialVersionUID = -5655586865922896598L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtName;
 	private JTextField txtAddress;
@@ -53,7 +47,8 @@ public class PatientAlert extends JDialog {
 			e.printStackTrace();
 		}
 		{
-			//Ok button to add new patient, checks if birthdate is valid and updates PatientListFrame
+			// Ok button to add new patient, checks if birthdate is valid and
+			// updates PatientListFrame
 			JButton okBtn = new JButton("Ok");
 			okBtn.setBounds(165, 483, 80, 23);
 			okBtn.addActionListener(new ActionListener() {
@@ -68,7 +63,7 @@ public class PatientAlert extends JDialog {
 						pLFrame.repaint();
 						setVisible(false);
 						dispose();
-						
+
 					} else {
 						lblPleaseEnterA.setVisible(true);
 					}
@@ -80,7 +75,7 @@ public class PatientAlert extends JDialog {
 			getRootPane().setDefaultButton(okBtn);
 		}
 		{
-			//Cancels adding new patient
+			// Cancels adding new patient
 			JButton cancelBtn = new JButton("Cancel");
 			cancelBtn.setBounds(247, 483, 80, 23);
 			cancelBtn.addActionListener(new ActionListener() {
@@ -157,24 +152,24 @@ public class PatientAlert extends JDialog {
 			lblPleaseEnterA.setBounds(158, 441, 215, 14);
 			lblPleaseEnterA.setVisible(false);
 			contentPanel.add(lblPleaseEnterA);
-			
+
 			setVisible(true);
 		}
 	}
-	//Check if <code>date</code> is valid
+
+	// Check if <code>date</code> is valid
 	private boolean isValidDate(String date) {
 		if (date.charAt(2) != '/' || date.charAt(5) != '/' || !isNumber(date.substring(6))) {
 			return false;
 		}
-		
+
 		return true;
 	}
-	//Check if <code>str</code> is a number
+
+	// Check if <code>str</code> is a number
 	private boolean isNumber(String str) {
 		try {
-			int date = Integer.parseInt(str);
-			
-
+			Integer.parseInt(str);
 		} catch (NumberFormatException nfe) {
 			return false;
 		}

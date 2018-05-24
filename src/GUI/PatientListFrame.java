@@ -21,6 +21,8 @@ import Management.Patient;
 
 public class PatientListFrame extends JFrame {
 
+	
+	private static final long serialVersionUID = 8356686953031687928L;
 	private JPanel contentPane;
 	private JList<String> patientList;
 	JLabel label = new JLabel("");
@@ -133,7 +135,7 @@ public class PatientListFrame extends JFrame {
 		// Creating new patient...
 		btnAddNewPatient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PatientAlert createNewPatient = new PatientAlert(getFrame());
+				new PatientAlert(getFrame());
 
 			}
 		});
