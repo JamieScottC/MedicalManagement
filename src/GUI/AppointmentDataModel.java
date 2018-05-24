@@ -50,3 +50,5 @@ public class AppointmentDataModel extends DefaultTableModel {
 		this.data = data;
 	}
 }
+
+

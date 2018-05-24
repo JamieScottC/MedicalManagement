@@ -20,7 +20,6 @@ import javax.swing.event.ListSelectionListener;
 import Management.Patient;
 import javax.swing.JTable;
 
-
 public class PatientListFrame extends JFrame {
 
 	private static final long serialVersionUID = 8356686953031687928L;
@@ -88,7 +87,7 @@ public class PatientListFrame extends JFrame {
 		scrollBar.setViewportView(patientList);
 		contentPane.add(scrollBar);
 		// Patient panel to view patient info
-		JPanel patientPanel = new JPanel();
+		final JPanel patientPanel = new JPanel();
 		patientPanel.setVisible(false);
 		patientPanel.setLayout(null);
 		patientPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -139,6 +138,20 @@ public class PatientListFrame extends JFrame {
 		lblAppointments.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblAppointments.setBounds(182, 406, 102, 14);
 		patientPanel.add(lblAppointments);
+
+		// Add appointment button
+		JButton btnAddAppointment = new JButton("Add Appointment");
+		btnAddAppointment.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if(!patientList.isSelectionEmpty()){
+					System.out.println("New Appointment dialog");
+					new AddAppointmentDialog(Patient.patients.get(patientList.getSelectedIndex()), getFrame());
+				}
+			}
+		});
+		btnAddAppointment.setBounds(162, 381, 115, 23);
+		patientPanel.add(btnAddAppointment);
 		// add patient button
 		btnAddNewPatient.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnAddNewPatient.setBounds(41, 11, 143, 23);
@@ -179,24 +192,12 @@ public class PatientListFrame extends JFrame {
 					updatePatientPanel(patient);
 
 					// Also update appointment table
-					AppointmentDataModel appointmentDataModel = new AppointmentDataModel(patient);
-
-					if (patient.getAppointments().size() != 0) {
-
-						appointmentDataModel.setRowCount(patient.getAppointments().size());
-						appointmentTable.setModel(appointmentDataModel);
-
-						// If we dont have any appointments lets clear the
-						// appointment table
-					} else {
-						appointmentDataModel.setRowCount(0);
-						appointmentTable.setModel(appointmentDataModel);
-
-					}
+					updateAppointmentTable(patient);
 				}
 			}
 		});
 	}
+
 	// Helper Methods
 
 	// Create array of Patient names and organize
@@ -227,6 +228,24 @@ public class PatientListFrame extends JFrame {
 
 	}
 
+	public void updateAppointmentTable(Patient patient) {
+		AppointmentDataModel appointmentDataModel = new AppointmentDataModel(
+				patient);
+
+		if (patient.getAppointments().size() != 0) {
+
+			appointmentDataModel.setRowCount(patient.getAppointments().size());
+			appointmentTable.setModel(appointmentDataModel);
+
+			// If we dont have any appointments lets clear the
+			// appointment table
+		} else {
+			appointmentDataModel.setRowCount(0);
+			appointmentTable.setModel(appointmentDataModel);
+
+		}
+	}
+
 	public void updatePatientList() {
 
 		patientList.setListData(createPatientNames());
@@ -237,3 +256,5 @@ public class PatientListFrame extends JFrame {
 		return this;
 	}
 }
+
+

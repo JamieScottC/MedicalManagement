@@ -31,7 +31,7 @@ public class PatientAlert extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public PatientAlert(PatientListFrame pLFrame) {
+	public PatientAlert(final PatientListFrame pLFrame) {
 		setModal(true);
 		setAlwaysOnTop(true);
 		setResizable(false);
@@ -157,8 +157,9 @@ public class PatientAlert extends JDialog {
 		}
 	}
 
+	//Static because they are re-useable in other classes
 	// Check if <code>date</code> is valid
-	private boolean isValidDate(String date) {
+	public static boolean isValidDate(String date) {
 		if (date.charAt(2) != '/' || date.charAt(5) != '/' || !isNumber(date.substring(6))) {
 			return false;
 		}
@@ -167,7 +168,7 @@ public class PatientAlert extends JDialog {
 	}
 
 	// Check if <code>str</code> is a number
-	private boolean isNumber(String str) {
+	public static boolean isNumber(String str) {
 		try {
 			Integer.parseInt(str);
 		} catch (NumberFormatException nfe) {
@@ -176,3 +177,5 @@ public class PatientAlert extends JDialog {
 		return true;
 	}
 }
+
+
