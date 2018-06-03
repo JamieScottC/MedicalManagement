@@ -1,4 +1,4 @@
-package Management;
+package management;
 
 public class Receptionist extends Employee{
 

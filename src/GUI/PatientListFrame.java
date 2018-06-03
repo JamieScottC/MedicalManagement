@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -17,7 +17,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import Management.Patient;
+import management.Patient;
+
 import javax.swing.JTable;
 
 public class PatientListFrame extends JFrame {

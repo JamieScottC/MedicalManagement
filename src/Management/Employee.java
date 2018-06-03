@@ -1,4 +1,4 @@
-package Management;
+package management;
 
 public class Employee {
 	private String name, address, phoneNumber, birthdate;

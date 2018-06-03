@@ -1,8 +1,8 @@
-package GUI;
+package gui;
 
 import javax.swing.table.DefaultTableModel;
 
-import Management.Patient;
+import management.Patient;
 
 public class AppointmentDataModel extends DefaultTableModel {
 	/**

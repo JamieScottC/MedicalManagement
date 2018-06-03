@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import Management.Appointment;
-import Management.Patient;
+import management.Appointment;
+import management.Patient;
 
 public class HomeFrame {
 
