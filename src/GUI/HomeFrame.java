@@ -43,17 +43,24 @@ public class HomeFrame {
 	 */
 	private void initialize() {
 		// Add test patients
-		Patient.patients.add(new Patient());
-		Patient.patients.add(new Patient());
-		Patient.patients.add(new Patient());
-		Patient.patients.add(new Patient());
-		Patient.patients.add(new Patient());
-		Patient.patients.add(new Patient());
-		Patient.patients.add(new Patient());
-		Patient test = new Patient("Joey Block", "test", "test", "05/05/2000", "test", "test", "test");
+		Patient test14 = new Patient("Barry Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test2 = new Patient("Richard Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test3 = new Patient("Joseph Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test4 = new Patient("John Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test5 = new Patient("Harold Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test6 = new Patient("Nick Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test7 = new Patient("Jack Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test8= new Patient("Stacy Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test9 = new Patient("Will Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test10 = new Patient("Kristen Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test11 = new Patient("Karen Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test12 = new Patient("Elise Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+		Patient test13 = new Patient("Alice Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
+
+		Patient test = new Patient("Joey Block", "148 Oliver RD", "914-856-0972", "05/05/2000", "Google", "Blue Shield", "05160291999");
 		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
-		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
-		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
+		test.getAppointments().add(new Appointment("05/08/05", "5:45", "Eye test"));
+		test.getAppointments().add(new Appointment("07/09/05", "9:30", "X-rays"));
 		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
 		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
 		test.getAppointments().add(new Appointment("05/05/05", "5:30", "Checkup"));
@@ -66,7 +73,7 @@ public class HomeFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		// Button to enter patient portal
-		JButton btnPatients = new JButton("Patients");
+		JButton btnPatients = new JButton("Enter Patient Portal");
 		btnPatients.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// When button clicked open new frame
@@ -77,28 +84,11 @@ public class HomeFrame {
 				plistframe.setVisible(true);
 			}
 		});
-		btnPatients.setBounds(30, 60, 150, 31);
-		btnPatients.setFont(new Font("Verdana", Font.PLAIN, 18));
+		btnPatients.setBounds(153, 141, 553, 188);
+		btnPatients.setFont(new Font("Verdana", Font.PLAIN, 44));
 		frame.getContentPane().add(btnPatients);
-
-		JButton btnEmployees = new JButton("Employees");
-		btnEmployees.setBounds(254, 60, 150, 31);
-		btnEmployees.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnEmployees.setFont(new Font("Verdana", Font.PLAIN, 18));
-		frame.getContentPane().add(btnEmployees);
-
-		JButton button = new JButton("Patients");
-		button.setBounds(30, 186, 150, 31);
-		button.setFont(new Font("Verdana", Font.PLAIN, 18));
-		frame.getContentPane().add(button);
-
-		JButton btnEmployees_1 = new JButton("Employees");
-		btnEmployees_1.setBounds(254, 186, 150, 31);
-		btnEmployees_1.setFont(new Font("Verdana", Font.PLAIN, 18));
-		frame.getContentPane().add(btnEmployees_1);
 	}
-
+	public JFrame getFrame(){
+		return frame;
+	}
 }

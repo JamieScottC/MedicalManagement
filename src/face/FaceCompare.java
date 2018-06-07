@@ -24,10 +24,7 @@ public class FaceCompare {
 	public static void main(String[] args){
 		new FaceCompare();
 	}
-
-	public FaceCompare() {
-		System.out.println(getCorrelationOfFeatures());
-	}
+	
 	
 	public double getCorrelationOfFeatures(){
 		BufferedImage img = null;

@@ -151,7 +151,7 @@ public class PatientListFrame extends JFrame {
 				}
 			}
 		});
-		btnAddAppointment.setBounds(162, 381, 115, 23);
+		btnAddAppointment.setBounds(152, 382, 136, 23);
 		patientPanel.add(btnAddAppointment);
 		// add patient button
 		btnAddNewPatient.setFont(new Font("Tahoma", Font.PLAIN, 13));
